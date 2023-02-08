@@ -1,0 +1,15 @@
+package com.dtos;
+
+import com.entities.Groupe;
+import com.entities.Salle;
+
+import java.util.Date;
+import java.util.List;
+
+public class ConcertDto {
+    private List<Groupe> groupes;
+    private Date dateDeb;
+    private Date dateFin;
+    private Salle salle;
+    private double prix;
+}
