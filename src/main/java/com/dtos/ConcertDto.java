@@ -2,10 +2,12 @@ package com.dtos;
 
 import com.entities.Groupe;
 import com.entities.Salle;
+import lombok.Data;
 
 import java.util.Date;
 import java.util.List;
 
+@Data
 public class ConcertDto {
     private List<Groupe> groupes;
     private Date dateDeb;
