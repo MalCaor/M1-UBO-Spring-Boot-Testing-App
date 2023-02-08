@@ -2,9 +2,7 @@ package com.entities;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -15,11 +13,13 @@ public class Concert {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
+    @ManyToMany
     private List<Groupe> groupes;
 
     private Date dateDeb;
     private Date dateFin;
 
+    @ManyToOne
     private Salle salle;
 
     private double prix;
