@@ -51,18 +51,22 @@ public class AdminServiceImpl implements AdminService {
     /**
      * Map Admin dto to Admin entity
      */
-    private AdminDto AdminEntityToDto(Admin Admin){
-        AdminDto AdminDto = new AdminDto();
-        // TODO : Set
-        return AdminDto;
+    private AdminDto AdminEntityToDto(Admin admin){
+        AdminDto adminDto = new AdminDto();
+        adminDto.setId(admin.getId());
+        adminDto.setLogin(admin.getLogin());
+        adminDto.setPwd(admin.getPwd());
+        return adminDto;
     }
 
     /**
      * Map Admin entity to Admin dto
      */
-    private Admin AdminDtoToEntity(AdminDto AdminDto){
-        Admin Admin = new Admin();
-        // TODO : Set
-        return Admin;
+    private Admin AdminDtoToEntity(AdminDto adminDto){
+        Admin admin = new Admin();
+        admin.setId(adminDto.getId());
+        admin.setLogin(adminDto.getLogin());
+        admin.setPwd(adminDto.getPwd());
+        return admin;
     }
 }
