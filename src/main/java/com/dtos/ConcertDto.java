@@ -9,6 +9,7 @@ import java.util.List;
 
 @Data
 public class ConcertDto {
+    private long id;
     private List<Groupe> groupes;
     private Date dateDeb;
     private Date dateFin;

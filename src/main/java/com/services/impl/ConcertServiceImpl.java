@@ -55,7 +55,12 @@ public class ConcertServiceImpl implements ConcertService {
      */
     private ConcertDto ConcertEntityToDto(Concert Concert){
         ConcertDto ConcertDto = new ConcertDto();
-        // TODO : Set
+        ConcertDto.setId(Concert.getId());
+        ConcertDto.setDateDeb(Concert.getDateDeb());
+        ConcertDto.setDateFin(Concert.getDateFin());
+        ConcertDto.setGroupes(Concert.getGroupes());
+        ConcertDto.setPrix(Concert.getPrix());
+        ConcertDto.setSalle(Concert.getSalle());
         return ConcertDto;
     }
 
@@ -64,7 +69,12 @@ public class ConcertServiceImpl implements ConcertService {
      */
     private Concert ConcertDtoToEntity(ConcertDto ConcertDto){
         Concert Concert = new Concert();
-        // TODO : Get
+        Concert.setId(ConcertDto.getId());
+        Concert.setDateDeb(ConcertDto.getDateDeb());
+        Concert.setDateFin(ConcertDto.getDateFin());
+        Concert.setGroupes(ConcertDto.getGroupes());
+        Concert.setPrix(ConcertDto.getPrix());
+        Concert.setSalle(ConcertDto.getSalle());
         return Concert;
     }
 }
