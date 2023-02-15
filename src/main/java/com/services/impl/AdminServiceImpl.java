@@ -4,11 +4,13 @@ import com.repositories.AdminRepository;
 import com.services.AdminService;
 import com.dtos.AdminDto;
 import com.entities.Admin;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service("adminService")
 public class AdminServiceImpl implements AdminService {
     private final AdminRepository AdminRepository;
 
