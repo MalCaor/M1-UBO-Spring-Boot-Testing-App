@@ -50,8 +50,9 @@ public class AdminController {
     /**
      * Verify login info
      */
-    public Boolean login(@PathVariable String pseudo, @PathVariable String mdp)
+    @GetMapping("/login")
+    public Boolean login(final @RequestBody AdminDto AdminDto)
     {
-        return AdminService.login(pseudo, mdp);
+        return AdminService.login(AdminDto);
     }
 }

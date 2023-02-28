@@ -28,5 +28,5 @@ public interface AdminService {
     /**
      * Verify login info
      */
-    boolean login(String pseudo, String mdp);
+    boolean login(AdminDto adminDto);
 }
