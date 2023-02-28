@@ -55,14 +55,13 @@ public class AdminServiceImpl implements AdminService {
         List<AdminDto> listAllAdmin = this.getAllAdmins();
         AdminDto admin = null;
         for (AdminDto a: listAllAdmin) {
-            if (a.getLogin() == pseudo) {
+            if (a.getLogin().equals(pseudo)) {
                 admin = a;
                 break;
             }
         }
         if (admin == null) return false;
-        if (admin.getPwd() != mdp) return  false;
-        return true;
+        return admin.getPwd().equals(mdp);
     }
 
     /**
