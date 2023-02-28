@@ -46,4 +46,12 @@ public class AdminController {
     public Boolean deleteAdmin(@PathVariable Long id){
         return AdminService.deleteAdmin(id);
     }
+
+    /**
+     * Verify login info
+     */
+    public Boolean login(@PathVariable String pseudo, @PathVariable String mdp)
+    {
+        return AdminService.login(pseudo, mdp);
+    }
 }

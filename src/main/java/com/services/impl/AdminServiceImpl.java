@@ -50,6 +50,21 @@ public class AdminServiceImpl implements AdminService {
         return AdminDtos;
     }
 
+    @Override
+    public boolean login(String pseudo, String mdp) {
+        List<AdminDto> listAllAdmin = this.getAllAdmins();
+        AdminDto admin = null;
+        for (AdminDto a: listAllAdmin) {
+            if (a.getLogin() == pseudo) {
+                admin = a;
+                break;
+            }
+        }
+        if (admin == null) return false;
+        if (admin.getPwd() != mdp) return  false;
+        return true;
+    }
+
     /**
      * Map Admin dto to Admin entity
      */

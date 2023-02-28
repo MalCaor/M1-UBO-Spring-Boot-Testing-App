@@ -24,4 +24,9 @@ public interface AdminService {
      * Get all the Admins
      */
     List<AdminDto> getAllAdmins();
+
+    /**
+     * Verify login info
+     */
+    boolean login(String pseudo, String mdp);
 }
