@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion Admin</title>
+</head>
+<body>
+    <h1>CONNEXION ADMIN</h1>
+    <main id="app">
+    <!--<form @submit.prevent="submitForm">-->
+    <form @submit.prevent="submitForm">
+        <div>
+            <label for="login">Pseudo : </label><br>
+            <input id="login" type="text"  v-model="login" required/>
+        </div>
+        <div>
+            <label for="pwd">MDP : </label><br>
+            <input id="pwd" type="password"  v-model="pwd" required/>
+        </div>
+
+        <button type="submit">Valider</button>
+        <div>
+            <p v-if="success"> Connecté</p>
+        </div>
+    </form>
+    </main>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        let uri = window.location.search.substring(1);
+        let params = new URLSearchParams(uri);
+
+        const Admin = {
+            data() {
+                return {
+                    login: '',
+                    pwd: '',
+                    admin:''
+                }
+            },
+            methods: {
+              submitForm() {
+                        const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ "login":this.login,"pwd": this.pwd })
+  };
+  fetch('http://localhost:8082/admin/login', requestOptions)
+    .then(response =>response.json() )
+    .then((json) => {this.admin = json})
+  	.then(console.log(this.admin));
+              }
+            },
+
+        }
+        const app = Vue.createApp(Admin).mount('#app')
+    </script>
+</body>
+</html>
