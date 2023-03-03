@@ -51,7 +51,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public boolean login(AdminDto adminDto) {
+    public String login(AdminDto adminDto) {
         System.out.println(adminDto);
         List<AdminDto> listAllAdmin = this.getAllAdmins();
         AdminDto admin = null;
@@ -61,8 +61,12 @@ public class AdminServiceImpl implements AdminService {
                 break;
             }
         }
-        if (admin == null) return false;
-        return admin.getPwd().equals(adminDto.getPwd());
+        if (admin == null) return "{\"bool\" : false}";
+        if (admin.getPwd().equals(adminDto.getPwd())) {
+            return "{\"bool\" : true}";
+        } else {
+            return "{\"bool\" : false}";
+        }
     }
 
     /**
