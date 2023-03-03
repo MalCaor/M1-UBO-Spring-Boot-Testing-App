@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Concert</title>
+  <!-- <link rel="stylesheet" href="css.css" type="text/css">-->
+</head>
+<body>
+<main id="app">
+  <p> le concert débute à {{ concert.DateDebut }} et se termine à {{ concert.DateFin }}, entrée : {{ concert.Prix }} euros</p>
+  <br>
+  <a :href="'acheterBillet.html?id='+concert.Id">acheter des places </a>
+
+  <h3>Article</h3>
+  <div v-for="a in articles" :key="a._id">
+    <p v-if="a.type === 'article'">
+      {{ a.information }}, rédigé par {{ a.auteur }}
+    </p>
+    <p v-else>
+      <img class="fit-picture"
+           :src="a.information">
+    <figcaption>Auteur : {{ a.auteur }}</figcaption>
+
+    </p>
+
+  </div>
+
+
+
+</main>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+        const Salle = {
+            data() {
+                return {
+                    concert:'',
+                    articles:[]
+
+                }
+            },
+            created()  {
+               let uri = window.location.search.substring(1);
+               let params = new URLSearchParams(uri);
+                fetch('http://localhost:8080/servlet/ConcertServlet?operation=getConcert&id='+params.get('id'))
+  				.then((response)=> response.json())
+  				.then((json) => {this.concert = json})
+  				fetch('http://localhost:8080/servlet/InformationServlet?table=concert&id='+params.get('id'))
+                .then((response)=> response.json())
+  				.then((json) => {this.articles = json})
+            }
+        }
+        const app = Vue.createApp(Salle).mount('#app')
+    </script>
+</body>
+</html>

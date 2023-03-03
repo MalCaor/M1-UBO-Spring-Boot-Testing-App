@@ -50,7 +50,7 @@ public class AdminController {
     /**
      * Verify login info
      */
-    @GetMapping("/login")
+    @PostMapping("/login")
     public Boolean login(final @RequestBody AdminDto AdminDto)
     {
         return AdminService.login(AdminDto);

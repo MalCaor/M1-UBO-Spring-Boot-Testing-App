@@ -52,6 +52,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public boolean login(AdminDto adminDto) {
+        System.out.println(adminDto);
         List<AdminDto> listAllAdmin = this.getAllAdmins();
         AdminDto admin = null;
         for (AdminDto a: listAllAdmin) {
